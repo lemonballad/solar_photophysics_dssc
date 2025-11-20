@@ -14,7 +14,7 @@ Transform the Solar Photophysics DSSC codebase from GUI-based scripts to an auto
 ## Phase 1: Project Setup & Dependencies
 
 ### 1.1 Environment Setup
-- [ ] Create `requirements.txt` with pinned versions:
+- [x] Create `requirements.txt` with pinned versions:
   ```
   numpy>=1.20
   scipy>=1.7
@@ -23,9 +23,9 @@ Transform the Solar Photophysics DSSC codebase from GUI-based scripts to an auto
   jupyter>=1.0
   pytest>=7.0
   ```
-- [ ] Create `pyproject.toml` for modern Python packaging
+- [x] Create `pyproject.toml` for modern Python packaging
 - [ ] Add `.python-version` file (recommend Python 3.9+)
-- [ ] Create `setup.py` or use `pip install -e .` for development
+- [x] Create `setup.py` or use `pip install -e .` for development
 
 ### 1.2 Project Structure
 - [ ] Create new directory structure:
@@ -58,31 +58,31 @@ Transform the Solar Photophysics DSSC codebase from GUI-based scripts to an auto
   ├── legacy/                  # Archive old sub_task dirs
   └── docs/
   ```
-- [ ] Move `sub_task_*` directories to `legacy/`
-- [ ] Keep `kinetiscope_profiles/` and `kinetiscope_results/` in place
+- [x] Move `sub_task_*` directories to `legacy/`
+- [x] Keep `kinetiscope_profiles/` and `kinetiscope_results/` in place
 
 ---
 
 ## Phase 2: Code Cleanup & Consolidation
 
 ### 2.1 Remove GUI Dependencies
-- [ ] Identify all tkinter imports and file dialog usage
-- [ ] Replace `filedialog.askopenfilenames()` with function parameters
-- [ ] Remove `root.withdraw()` and window management code
-- [ ] Delete `messagebox` error handling (fail with exceptions instead)
+- [x] Identify all tkinter imports and file dialog usage
+- [x] Replace `filedialog.askopenfilenames()` with function parameters
+- [x] Remove `root.withdraw()` and window management code
+- [x] Delete `messagebox` error handling (fail with exceptions instead)
 
 ### 2.2 Eliminate Hardcoded Paths
-- [ ] Search for all `C:\\Users\\tpcheshire\\` references
-- [ ] Replace with `pathlib.Path` parameters
-- [ ] Use relative paths for example data
-- [ ] Add path validation with assertions (fail fast)
+- [x] Search for all `C:\\Users\\tpcheshire\\` references
+- [x] Replace with `pathlib.Path` parameters
+- [x] Use relative paths for example data
+- [x] Add path validation with assertions (fail fast)
 
 ### 2.3 Consolidate Duplicate Code
 Files to merge from `sub_task_1/`, `sub_task_4/`:
-- [ ] `Utility_fsTA.py` → `src/dssc/constants.py`
-- [ ] `Utility_Chirp.py` + `utilities_chirp.py` → `src/dssc/chirp.py`
-- [ ] `utilities_raw_ta_processing.py` → `src/dssc/processing.py`
-- [ ] Keep best implementation from each duplicate
+- [x] `Utility_fsTA.py` → `src/dssc/constants.py`
+- [x] `Utility_Chirp.py` + `utilities_chirp.py` → `src/dssc/chirp.py`
+- [x] `utilities_raw_ta_processing.py` → `src/dssc/processing.py`
+- [x] Keep best implementation from each duplicate
 
 ### 2.4 Code Style Cleanup
 - [ ] Standardize matplotlib alias: `mplot` → `plt`
