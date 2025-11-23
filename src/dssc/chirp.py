@@ -67,8 +67,8 @@ def fit_chirp(
     time_mat = np.tile(time, (len(wavelength), 1))
 
     # Calculate expectation value <t> = ∫(t * S²)dt / ∫(S²)dt at each wavelength
-    numerator = np.trapz(time_mat * signal_clean**2, x=time, axis=1)
-    denominator = np.trapz(signal_clean**2, x=time, axis=1)
+    numerator = np.trapezoid(time_mat * signal_clean**2, x=time, axis=1)
+    denominator = np.trapezoid(signal_clean**2, x=time, axis=1)
 
     # Avoid division by zero
     denominator[denominator == 0] = 1

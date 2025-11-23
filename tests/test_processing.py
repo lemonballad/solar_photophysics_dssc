@@ -25,14 +25,18 @@ class TestSignConvention:
         time = np.linspace(-1, 10, 50)
         signal = np.zeros((100, 50))
 
-        # Add positive "bleach" at 460 nm
+        # Add positive "bleach" at 460 nm - make it the dominant feature
+        # Present for majority of time points so it's identified as bleach
         idx = 15  # ~460 nm
-        signal[idx, 25:] = 50  # Positive (wrong)
+        signal[idx, 10:] = 50  # Positive (wrong) - present for 40/50 time points
+        # Add smaller features at other wavelengths
+        signal[50, 10:] = 10
+        signal[70, 10:] = 5
 
         data = TAData(wavelength=wavelength, time=time, signal=signal)
         corrected = adjust_sign_convention(data)
 
-        # Bleach should now be negative
+        # Bleach should now be negative (sign flipped)
         assert corrected.signal[idx, 30] < 0
 
 

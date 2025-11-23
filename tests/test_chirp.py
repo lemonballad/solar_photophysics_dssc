@@ -61,14 +61,18 @@ class TestFindTrustBounds:
     """Tests for trust bounds finding."""
 
     def test_smooth_data(self):
-        """Test finding bounds in smooth data."""
-        # Create smooth polynomial data
+        """Test finding bounds in smooth data with noisy edges."""
+        # Create polynomial data with noise at edges (realistic scenario)
+        np.random.seed(42)
         x = np.linspace(0, 10, 100)
         data = x**2
+        # Add noise at the beginning and end to simulate real data
+        data[:15] = data[:15] + np.random.randn(15) * 5
+        data[-15:] = data[-15:] + np.random.randn(15) * 5
 
         first, last = find_trust_bounds(data, min_consecutive=10)
 
-        # Should find valid bounds
+        # Should find valid bounds in the smooth middle region
         assert first >= 0
         assert last <= len(data)
         assert last > first
